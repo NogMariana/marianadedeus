@@ -22,9 +22,21 @@
 		<link href="css/tiny-slider.css" rel="stylesheet">
 		<link href="css/style.css" rel="stylesheet">
 		<title>Furni Free Bootstrap 5 Template for Furniture and Interior Design Websites by Untree.co </title>
+
+		<!-- Google Tag Manager -->
+           <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	       })(window,document,'script','dataLayer','GTM-53TMWBD5');</script>
+	    <!-- End Google Tag Manager -->
 	</head>
 
 	<body>
+        <!-- Google Tag Manager (noscript) -->
+         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-53TMWBD5"
+	     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	    <!-- End Google Tag Manager (noscript) -->
 
 		<!-- Start Header/Navigation -->
 		<nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
@@ -66,7 +78,7 @@
 							<div class="intro-excerpt">
 								<h1>Modern Interior <span clsas="d-block">Design Studio</span></h1>
 								<p class="mb-4">Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique.</p>
-								<p><a href="" class="btn btn-secondary me-2">Shop Now</a><a href="#" class="btn btn-white-outline">Explore</a></p>
+								<p><a href="" class="btn btn-secondary me-2 trackable-button" id="meuBotao" data-content-id="Produto X" data-content-type="buttom">Shop Now</a><a href="#" class="btn btn-white-outline trackable-button" id="meuBotao1" data-content-id="Produto Y" data-content-type="buttom">Explore</a></p>
 							</div>
 						</div>
 						<div class="col-lg-7">
@@ -78,6 +90,40 @@
 				</div>
 			</div>
 		<!-- End Hero Section -->
+
+		<script>
+		// Track clicks on all elements with class "btn-secondary"
+		document.querySelectorAll('.trackable-button').forEach(button => {
+  		button.addEventListener('click', function(event) {
+    		// Prevent default if it's a link (optional)
+   			 event.preventDefault();
+
+    		// Get data attributes
+   			const contentId = this.getAttribute('data-content-id');
+    		const contentType = this.getAttribute('data-content-type');
+
+   			 // Validate required attributes
+    		if (!contentId || !contentType) {
+      			console.warn('Missing data attributes:', this);
+      			return;
+   			}
+
+    		// Push to dataLayer
+    		window.dataLayer = window.dataLayer || [];
+    		window.dataLayer.push({
+     			event: 'select_content',
+      			content_id: contentId,
+      			content_type: contentType
+   			});
+
+   			console.log('teste', { contentId, contentType });
+  			});
+		});
+		  </script>
+		  
+		  
+
+
 
 		<!-- Start Product Section -->
 		<div class="product-section">
